@@ -1,6 +1,5 @@
 package org.snomed.snowstorm.rest;
 
-import io.kaicode.elasticvc.api.PathUtil;
 import io.kaicode.rest.util.branchpathrewrite.BranchPathUriUtil;
 import org.elasticsearch.common.Strings;
 import org.snomed.snowstorm.core.data.domain.ConceptMini;
@@ -21,7 +20,6 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriComponents;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -98,6 +96,7 @@ public class ControllerHelper {
 	}
 
 	public static PageRequest getPageRequest(int offset, int limit) {
+		validatePageSize(offset, limit);
 		return getPageRequest(offset, limit, null);
 	}
 
